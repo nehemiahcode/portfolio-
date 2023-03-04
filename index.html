@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- NEHEMIAH'S CODE            TO CODE YOU NEED TO BE CREATIVE NOTE THAT!-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nehemiah's Portfolio</title>
+    <script src="https://kit.fontawesome.com/f8c8d43adc.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="favicon (2).png">
+    <style>
+        * {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    }
+     body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    overflow-x: hidden;
+    padding-top: 43px;
+    margin:0;
+    scroll-behavior: smooth;
+    font-family: Tahoma, sans-serif;
+ } 
+
+
+    /*===HEADER===*/
+     header {
+            position: fixed;
+            top:0;
+            right:0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height:auto;
+            z-index: 100;
+            background: rgb(255, 255, 255);
+            box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.1);
+            border-top: 2px solid red;
+        }
+        /*==Logo===*/
+     .logo {
+       height: 60px;
+       line-height: 60px;
+       top:0;
+       text-decoration: none;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+        padding-left: 20px;
+
+} 
+        .logo2 {
+            padding-left: 2px;
+            top:0;
+            display: flex;
+        } 
+        .menu {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        #toggle {
+            position: absolute;
+            top:0;
+            right:0;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            /* background: rgb(255, 255, 255); */
+        }
+        #toggle::before {
+            content:"";
+            position: absolute;
+            width: 27px;
+            height: 3px;
+            background: #000000;
+            transform: translateY(-5px);
+            transition:0.2s;
+        }
+
+        #toggle::after{
+            content:"";
+            position: absolute;
+            width: 27px;
+            height: 3px;
+            background: #000000;
+            transform: translateY(5px);
+            transition:0.2s;
+        }
+
+        #toggle.active::before {
+            transform: translateY(0px) rotate(45deg);
+            transition: .5s;
+        }
+
+        #toggle.active::after {
+            transform: translateY(0px) rotate(-45deg);
+            transition: .5s;
+        }
+        #toggle.active {
+            background: rgb(255, 0, 0);
+        }
+
+        #navbar {
+            position: relative;
+            right: 60px;
+            height: 60px;
+            width:0px;
+            background: rgb(255, 255, 255);
+            transition: 0.5s;
+            overflow: hidden;
+            z-index: 99px;
+        }
+         #navbar.active {
+            width:auto;
+        } 
+        #navbar ul {
+            position: relative;
+            display: flex;
+        }
+        #navbar ul li {
+            list-style: none;
+        }
+        #navbar ul li a {
+            color:#000000;
+            height: 60px;
+            line-height: 60px;
+            display:inline-block;
+            text-decoration:none;
+            font-size: 1.2em;
+            padding: 0 15px;
+            letter-spacing: 2px;
+            white-space: normal;
+            padding-right:20px;
+        }
+
+        #navbar ul li a:hover {
+            color:rgb(255, 255, 255);
+            background:  rgb(179, 23, 23);
+        }
+
+        @media (max-width:991px) {
+          #navbar  {
+                position: fixed;
+                bottom:0;
+                right:0;
+                height: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* height: calc(100vh 60px); */
+            }
+            #navbar.active {
+                height: calc(100vh - 60px); 
+                top:59px;
+                width: 100%;
+            }
+            #navbar ul {          
+             flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            }
+        }
+
+       /*the end for both the navbar and menu icon*/
+
+
+          /*===The preloader icon===*/
+        .preloader{
+        position: fixed;
+        z-index: 9999;
+         top:0;
+        left:0;
+       width:100%;
+       height: 100%;
+       background-color: #000000;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+      }
+
+    .loading {
+    display: flex;
+   align-items: center;
+   }
+
+   
+.loading-spinner {
+width: 70px;
+height: 70px;
+border: 4px solid #ffffff;
+border-top-color: #ffffff;
+border-left-color: rgb(0, 0, 0) ;
+border-right-color: rgb(0, 0, 0) ;
+border-radius: 50%;
+animation: loading-spin 1s linear infinite;
+transform-origin: center;
+box-sizing: border-box;
+padding:30px;
+  /* clip-path: polygon(100% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+*/
+}
+
+@keyframes loading-spin {
+0% {
+    transform:rotate(0deg);
+}
+100% {
+    transform:rotate(360deg);
+}
+
+}
+/*The end of the preloader icons styles*/
+
+
+
+/*All the styles for the dark mode and light mode and the toggle icons used*/
+
+ /*==for  toggle==*/
+.myBtn {
+     /* background-color: rgb(245, 97, 97); */
+     display:block;
+     border-radius: 50%;
+     color:rgb(0, 0, 0);
+      cursor: pointer;
+     font-size: 18px;
+     position: fixed;
+      /* bottom: 50px; */
+      top:3px;
+     left:100px;
+     border: none;
+     outline:none;
+     padding: 10px;
+     width:40px;
+     height:40px;
+     z-index: 999;
+    }
+    body {
+        background: white;
+        transition: 1.5s;
+        color:black;
+    }
+    #media {
+        color:rgb(43, 139, 228);
+    }
+    .dark-mode {
+        background-color: rgba(0, 0, 0, 0.884);
+        transition: 1.5s;
+        color:white;
+    }
+    #dark-mode-icon {
+        font-size: 25px;
+        color:black;
+        padding:3px;
+    }
+    .dark-mode #toggle::before {
+        background-color: white;
+    }
+    .dark-mode #toggle::after {
+        background-color: white;
+    }
+    .dark-mode #navbar {
+        background-color: #000000;
+    }
+    .dark-mode .submit-button {
+        color:black;
+        background-color: white;
+
+    }
+    .dark-mode .submit-button::after {
+        border-bottom: 3px solid rgb(0, 0, 0);
+    }
+    .dark-mode .submit-button:hover{
+        border-bottom: 3px solid rgb(255, 255, 255);
+    }
+    .dark-mode #navbar ul li a {
+      color:white;
+    }
+    .dark-mode .first-heading {
+        color:white;
+    }
+    .dark-mode #header {
+        background-color: #000000;
+        box-shadow: 0 5px 5px 5px rgba(255, 255, 255, 0.041);
+        border-top: 4px solid rgb(255, 255, 255);
+    }
+    .dark-mode input[type=text] {
+        background-color: rgba(0, 0, 0, 0.5);
+        color:white;
+    }
+    .dark-mode input[type=email] {
+        background-color: rgba(0, 0, 0, 0.5);
+        color:white;
+    }
+   .dark-mode textarea {
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+    }
+    .dark-mode ::placeholder {
+        color:white;
+    }
+    .dark-mode :-ms-input-placeholder {
+        color: white;
+    }
+    .dark-mode ::-ms-input-placeholder {
+        color:white;
+    }
+   
+    .dark-mode .h1 {
+        color:white;
+    }
+    .dark-mode #fa-phone {
+        color:rgb(64, 134, 192);
+    }
+    .dark-mode #fa-phone {
+        color:rgb(64, 134, 192);
+    }
+    .dark-mode #fa-phone {
+        color:rgb(64, 134, 192);
+    }
+    .dark-mode  .submit-button:hover {
+        border: 1px solid white;
+        color:white;
+    }
+    #fa {
+        color:blue;
+    }
+    .dark-mode .card {
+        box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.041);
+    }
+    #dark-mode-icon {
+        font-size: 21px;
+        color:gold;
+        padding:3px;
+    }
+    .dark-mode .alert {
+    border: 2px solid rgb(255, 255, 255);
+    color:  rgb(255, 255, 255);
+    }
+    .dark-mode .alert2 {
+    background-color: white;
+    border:2px solid rgb(0, 0, 0);
+    color:black;
+    }
+   
+    .dark-mode input[type=text] {
+        border: 1px solid white;
+    }
+   .dark-mode input[type=email]  {
+        border:1px solid white;
+    }
+    .dark-mode textarea {
+        border: 1px solid white;
+    }
+    .dark-mode #dark-mode-icon {
+        color:black;
+    }
+    #dark-mode-toggle {
+        outline:none;
+        border:1px solid rgb(0, 0, 0);
+        border-radius: 50%;
+        width:40px;
+        background-color: white;
+        height:40px;
+    }
+    #dark-mode-toggle:focus {
+        border:1px solid gold;
+    }
+    #dark-mode footer {
+        background-color: rgba(0, 0, 0, 0.7);
+        color:white;
+    }
+    /*the end for dark and light mode styles*/
+
+
+
+
+    /*For responsiveness*/
+       
+    /*==The coulmns for my layout 50%===*/
+    .column {
+        float:left;
+        width:50%;
+        padding: 10px;
+    }
+        /*==The second coulmns for my layout 25%===*/
+    .column2 {
+        float:left;
+        width:25%;
+        padding: 10px;
+    }
+
+    .row::after {
+        display:table;
+        clear:both;
+        content:"";
+    }
+
+    /*===To make the columns for my layout responsive===*/
+    @media screen and (max-width:600px) {
+        .column {
+            width:100%;
+        }
+        .column2 {
+            width:100%;
+        }
+    }
+    /*The end for responsiveness*/
+
+     .first-heading {
+        color:red;
+        font-size:25px;
+        font-weight: 100%;
+        text-align: center;
+     }
+       #about-text, #skill-text {
+        font-size: 18px;
+       }
+       /*===The cards===*/
+  .card {
+    height: 300px;
+    width: 95%;
+    background-color:white;
+    box-shadow: 0px 4px 8px 3px rgb(202, 197, 197), 0px 4px 8px 3px rgba(182, 177, 177, 0.918);
+  }
+    
+  /*===the blur background in my portfolio section===*/
+  .blur-container {
+    position: relative;
+    max-width: 800px;
+    margin:0 auto;
+   }
+   .blur-container .content {
+    position: absolute;
+    bottom: 0;
+    top:0;
+    /* background: rgb(0, 0, 0); */
+    background: rgba(0, 0, 0, 0.1);
+    color:#f1f1f1;
+    width: 100%;
+    padding: 150px;
+   }
+
+   /*===Filter button===*/
+   .filter-button {
+    height: 50px;
+    border: none;
+    font-size: large;
+    width:150px;
+    background-color: red;
+    color:white;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+    border-radius:4px ;
+    box-shadow:inset 1px 3px 3px 3px rgba(0, 0, 0, 0.3);
+   }
+
+   /*===Filter button when hovered===*/
+   .filter-button:hover {
+    border: 3px solid white;
+    outline:2px solid green;
+    background-color: rgba(255, 0, 0, 0.7);
+   }
+    .h1 {
+        color:red;
+    }
+
+    /*===The red line under each headings===*/
+   .first-heading::after {
+        content: "";
+        display: block;
+        margin-left:40%;
+        margin-top: 10px;
+        margin-right:40%;
+        border-bottom: 3px solid red;
+    }
+
+    .form-page {
+        width: 100%;
+        /* background: rgb(255, 255, 255); */
+        border-radius:16px ;
+        /* overflow-x: scroll; */
+         height:auto;
+
+    }
+    textarea {
+        resize: none;
+        height: 120px;
+        /* border-radius: 3px; */
+        width:300px;
+        outline: none;
+        border: 1px solid black;
+        background: white;
+        text-transform: capitalize;
+    }
+    input[type=text], input[type=email] {
+        height:45px;
+        border: 1px solid black;
+        width: 300px;
+        outline: none;
+        /* border-radius: 3px; */
+        background:white;
+    }
+    ::placeholder {
+        text-transform: capitalize;
+    }
+    input[type=text] {
+        text-transform: capitalize;
+    }
+    input[type=email] {
+        text-transform: lowercase;
+    }
+    .submit-button {
+        width:130px;
+        height: 50px;
+        background-color: gray;
+        color:black ;
+        text-align: center;
+        outline: none;
+        border: none;
+        border-radius:4px ;
+         box-shadow:inset 1px 3px 3px 3px rgba(0, 0, 0, 0.3);
+    }
+    .submit-button::after {
+        content: "";
+        display: block;
+        margin-left:30%;
+        margin-top: 10px;
+        margin-right:30%;
+        border-bottom: 3px solid rgb(43, 40, 40);
+    }
+    .submit-button:hover {
+        background-color: transparent;
+        border:1px solid black;
+    }
+ ::placeholder {
+    color:black;
+    opacity: 1;
+ }
+ :-ms-input-placeholder {
+    color:black;
+ }
+ ::-ms-input-placeholder {
+    color:black;
+ }
+
+ /*=== the first alert message==*/
+ .alert {
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    padding: 20px;
+    background-color: green;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+    color:rgb(255, 255, 255);
+ }
+ /*===The second alert message*/
+ .alert2 {
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    padding: 20px;
+    background-color:green;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+    color:rgb(255, 255, 255);
+ }
+ /*===The third alert message===*/
+ .alert3 {
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    padding: 20px;
+    background-color:green;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    text-align: center;
+    display: none;
+    color:rgb(255, 255, 255);
+}
+    /*===Footer===*/
+    footer {
+        padding: 10px;
+        text-align: center;
+        height: auto;
+        padding-bottom: 20px;
+        color:#000000;
+        background: linear-gradient(to right, lightgray, white);
+    }
+    
+    </style>
+</head>
+<body>
+
+     <div class="preloader">
+        <div class="loading">
+          <div class="loading-spinner"></div>
+        </div>
+      </div>
+
+    <header id="header">
+        <span>
+            <a href="#" class="logo" title="Me">
+               <img id="logo" src="my-picture.jpg" style="width:50px;border-radius:50%; height:50px"> 
+            </a>
+        </span>
+      <div id="toggle"></div>
+        <div id="navbar">
+        <ul>
+             <li><a href="#home" title="HOME">HOME</a></li>
+             <li><a href="#skills" title="SKILLS">SKILLS</a></li>
+              <li><a href="#portfolio" title="PORTFOLIO">PORTFOLIO</a></li>
+             <li><a href="#contact" title="CONTACT">CONTACT</a></li>
+        </ul>
+         </div>
+     </header>
+     <div class="myBtn">
+        <button id="dark-mode-toggle">
+            <i id="dark-mode-icon" class="fas fa-sun"></i>
+           </button>
+           </div>
+
+
+        <section>
+            <div class="row">
+                <center>
+                    <p id="home"></p>
+                    <br>
+                <div class="column">
+                 <h1 class="h1" >Hi, i am<br> Nehemiah.Nice to<br> meet you</h1>
+                 <p id="about-text">I am a front-end web developer and Designer.I am quietly confident, naturally curious and keep working
+                     on improving my skills
+                    .Welcome to my simple way of showing you what i can or will love to do for you.Feel free to look at my latest
+                     projects on the Portfolio section.Remotely available.<strong>ekemezienehemiah@gmail.com</strong>
+                 </p>
+                </div>
+                <div class="column">
+                        <img src="images (10).jpeg" width="100%" height="400px" alt="computer-picture">
+                </div>
+            </center>
+            </div>
+        </section>
+        
+  
+
+
+        <section>
+            <div class="row">
+                <center>
+                    <p id="skills"></p>
+                    <br>
+                    <br>
+                <h1 class="first-heading">Skills</h1>
+                <div class="column2" style="height:auto">
+                    <i class="fa-solid fa-layer-group"  style="color:rgb(64, 134, 192);font-size: 165px;"></i>
+                 <p id="skill-text">I value simple content structure, clean design patterns and thoughtful interactions.
+                    Constantly learning and adapting to new changes.
+                 </p>
+                </div>
+                <div class="column2" style="height:auto">
+                        <?xml version="1.0" encoding="iso-8859-1"?>
+                        <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        height="200px"
+                             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                        <g transform="translate(1 1)">
+                            <path style="fill:#2A93CB;" d="M229.4,262.68h-68.267c-5.12,0-8.533-3.413-8.533-8.533s3.413-8.533,8.533-8.533H229.4
+                                c5.12,0,8.533,3.413,8.533,8.533C237.933,258.413,234.52,262.68,229.4,262.68z M255,237.08c-5.12,0-8.533-3.413-8.533-8.533V134.68
+                                c0-5.12,3.413-8.533,8.533-8.533s8.533,3.413,8.533,8.533v93.867C263.533,232.813,260.12,237.08,255,237.08z"/>
+                            <path style="fill:#D0E8F9;" d="M229.4,254.147c0,14.507,11.093,25.6,25.6,25.6c14.507,0,25.6-11.093,25.6-25.6
+                                c0-14.507-11.093-25.6-25.6-25.6C240.493,228.547,229.4,239.64,229.4,254.147L229.4,254.147z"/>
+                            <g>
+                                <path style="fill:#0096E6;" d="M255,288.28c-18.773,0-34.133-15.36-34.133-34.133s15.36-34.133,34.133-34.133
+                                    s34.133,15.36,34.133,34.133C289.133,272.92,273.773,288.28,255,288.28z M255,237.08c-9.387,0-17.067,7.68-17.067,17.067
+                                    s7.68,17.067,17.067,17.067s17.067-7.68,17.067-17.067S264.387,237.08,255,237.08z"/>
+                                <path style="fill:#0096E6;" d="M255,450.413c-5.12,0-8.533-3.413-8.533-8.533v-8.533c0-5.12,3.413-8.533,8.533-8.533
+                                    s8.533,3.413,8.533,8.533v8.533C263.533,446.147,260.12,450.413,255,450.413z M121.88,394.947c-2.56,0-4.267-0.853-5.973-2.56
+                                    c-3.413-3.413-3.413-8.533,0-11.947l5.973-5.973c3.413-3.413,8.533-3.413,11.947,0c3.413,3.413,3.413,8.533,0,11.947l-5.973,5.973
+                                    C127,394.093,124.44,394.947,121.88,394.947z M442.733,262.68H434.2c-5.12,0-8.533-3.413-8.533-8.533s3.413-8.533,8.533-8.533
+                                    h8.533c5.12,0,8.533,3.413,8.533,8.533C451.267,258.413,447.853,262.68,442.733,262.68z M75.8,262.68h-8.533
+                                    c-5.12,0-8.533-3.413-8.533-8.533s3.413-8.533,8.533-8.533H75.8c5.12,0,8.533,3.413,8.533,8.533
+                                    C84.333,258.413,80.92,262.68,75.8,262.68z M381.293,135.533c-2.56,0-4.267-0.853-5.973-2.56c-3.413-3.413-3.413-8.533,0-11.947
+                                    l5.973-5.973c3.413-3.413,8.533-3.413,11.947,0c3.413,3.413,3.413,8.533,0,11.947l-5.973,5.973
+                                    C386.413,134.68,383.853,135.533,381.293,135.533z M128.707,135.533c-2.56,0-4.267-0.853-5.973-2.56L115.907,127
+                                    c-3.413-3.413-3.413-8.533,0-11.947s8.533-3.413,11.947,0l5.973,5.973c3.413,3.413,3.413,8.533,0,11.947
+                                    C132.973,134.68,130.413,135.533,128.707,135.533z M255,83.48c-5.12,0-8.533-3.413-8.533-8.533v-8.533
+                                    c0-5.12,3.413-8.533,8.533-8.533s8.533,3.413,8.533,8.533v8.533C263.533,79.213,260.12,83.48,255,83.48z"/>
+                                <path style="fill:#0096E6;" d="M255,511C114.2,511-1,395.8-1,255S114.2-1,255-1s256,115.2,256,256
+                                    c0,30.72-5.12,60.587-16.213,88.747c-1.707,4.267-6.827,6.827-11.093,5.12c-4.267-1.707-6.827-6.827-5.12-11.093
+                                    C488.813,311.32,493.08,283.16,493.08,255C493.933,123.587,386.413,16.067,255,16.067S16.067,123.587,16.067,255
+                                    S123.587,493.933,255,493.933c28.16,0,56.32-5.12,82.773-14.507c4.267-1.707,9.387,0.853,11.093,5.12
+                                    c1.707,4.267-0.853,9.387-5.12,11.093C315.587,505.88,285.72,511,255,511z"/>
+                                <path style="fill:#0096E6;" d="M417.133,502.467c-5.12,0-8.533-3.413-8.533-8.533v-7.68
+                                    c-19.627-4.267-34.133-21.333-34.133-41.813c0-5.12,3.413-8.533,8.533-8.533c5.12,0,8.533,3.413,8.533,8.533
+                                    c0,11.093,6.827,20.48,17.067,23.893V421.4l-18.773-14.507c-6.827-5.12-11.093-12.8-11.947-21.333
+                                    c-0.853-8.533,1.707-16.213,6.827-22.187c5.973-7.68,14.507-11.947,23.893-14.507v-8.533c0-5.12,3.413-8.533,8.533-8.533
+                                    c5.12,0,8.533,3.413,8.533,8.533v9.387c19.627,4.267,34.133,21.333,34.133,41.813c0,5.12-3.413,8.533-8.533,8.533
+                                    s-8.533-3.413-8.533-8.533c0-11.093-6.827-20.48-17.067-23.893v46.933l18.773,14.507c6.827,5.12,11.093,12.8,11.947,21.333
+                                    c0.853,8.533-1.707,16.213-6.827,22.187c-5.973,7.68-14.507,11.947-23.893,14.507v6.827
+                                    C425.667,499.053,422.253,502.467,417.133,502.467z M425.667,435.907v33.28c4.267-1.707,7.68-4.267,11.093-7.68
+                                    c2.56-2.56,3.413-5.973,2.56-9.387c0-3.413-2.56-6.827-5.12-9.387L425.667,435.907z M408.6,367.64
+                                    c-4.267,1.707-7.68,4.267-11.093,7.68c-2.56,2.56-3.413,5.973-2.56,9.387c0,3.413,2.56,6.827,5.12,9.387l8.533,6.827V367.64z"/>
+                            </g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        <g>
+                        </g>
+                        </svg>
+                    <p id="skill-text">I value time.I have developed myself to manage time effectively and delivering projects fast. Time is money</p>
+                </div>
+                <div class="column2" style="height:auto">
+                    <?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+height="200px" 
+	 viewBox="0 0 458.75 458.75" fill="rgb(126 141 179)" style="enable-background:new 0 0 458.75 458.75;" xml:space="preserve">
+<g id="XMLID_461_">
+	<circle id="XMLID_801_" cx="148.02" cy="62.886" r="32.568"/>
+	<path id="XMLID_1188_" d="M455.923,270.81l-36.948-50.759c-0.847-1.164-1.86-2.197-3.006-3.068l-54.341-41.265
+		c-4.144-3.147-9.412-3.757-13.964-2.106c-3.996,0.391-2.44,0.093-42.369,15.339c-4.726,1.804-8.465,5.064-10.913,9.071
+		l23.188-4.979l-50.118,25.25c-46.326-26.377-46.848-27.72-53.07-27.113c-2.956-2.154-3.99-2.108-18.856-5.929l-35.587-9.147
+		l-18.447-53.001l14.04,20.964l2.437-6.382c4.334-11.352-1.354-24.067-12.706-28.402c-39.874-15.225-38.375-14.951-42.39-15.34
+		c-3.853-1.393-8.26-1.198-12.133,0.932L30.515,128.01c-2.803,1.542-5.029,3.954-6.342,6.871L1.304,185.685
+		c-3.345,7.431-0.033,16.167,7.398,19.512c7.427,3.344,16.165,0.036,19.512-7.398L49.06,151.49l18.404-10.127l-26.899,72.322
+		c0,0-1.884,18.136-11.42,148.14c-0.696,9.467,6.414,17.706,15.881,18.402c0.079,0.006,0.157,0.004,0.236,0.009H16.685
+		c-3.774,0-6.833,3.059-6.833,6.833v34.539c0,3.774,3.059,6.833,6.833,6.833h141.821c3.774,0,6.833-3.059,6.833-6.833v-34.539
+		c0-3.774-3.059-6.833-6.833-6.833h-25.587c9.148-0.389,16.451-7.906,16.451-17.15V282.14c0-3.271-0.933-6.473-2.689-9.231
+		l-25.221-39.611l8.645-22.641c-5.698-4.739-9.062-11.471-9.527-15.907l-6.282-60.002l20.37,58.527
+		c1.621,4.655,5.464,8.207,10.263,9.441c62.696,16.114,58.654,15.411,62.19,15.068c1.138,0.826-3.497-1.875,52.605,30.069
+		c4.335,2.468,9.616,2.533,13.94,0.355l55.344-27.883l-26.734,22.395l21.328,55.857l-22.256,17.696
+		c-2.931,2.331-5.021,5.555-5.952,9.182l-20.907,81.474c-2.359,9.194,3.182,18.561,12.376,20.92
+		c9.194,2.359,18.561-3.182,20.92-12.376l19.473-75.884l35.435-28.175l6.241-2.383l-6.485,36.914
+		c-0.751,4.277,0.144,8.679,2.506,12.323l40.37,62.282c5.164,7.968,15.809,10.236,23.771,5.074
+		c7.965-5.163,10.237-15.806,5.074-23.771l-36.695-56.613l8.871-50.493l-18.93-62.391l8.978,6.818l35.67,49.004
+		c4.797,6.591,14.026,8.041,20.613,3.246C459.266,286.627,460.719,277.398,455.923,270.81z M131.445,380.235H47.1
+		c8.566-0.397,15.684-7.123,16.329-15.89l10.154-138.054l3.518,1.343l37.892,59.512v75.938
+		C114.994,372.329,122.297,379.846,131.445,380.235z"/>
+	<circle id="XMLID_1189_" cx="302.536" cy="142.555" r="32.568"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+                    <p id="skill-text">I genuienly care about people and love to help fellow developers work on their craft
+                    </p>
+                </div>
+                <div class="column2" style="height:auto">
+                    <i class="fa-solid fa-address-card"  style="color:rgb(64, 134, 192);font-size: 160px;"></i>
+                    <p id="skill-text">My works are clean, creative and responsive.Designing  and developing responsive pages is my job.
+                       You can let me know of any king of project you need, i am fully available to give you my best.  </p>
+                </div>
+            </center>
+            </div>
+        </section>
+
+
+
+        <section>
+            <div class="row">
+                <div class="row">
+                    <div class="column" style="height: 400px;">
+                       <center>
+                           <div class="card">
+                               <h2 style="text-align:left;padding-left: 10px;">Languages and tools<br> i am familiar with</h2>
+                              <p style="word-spacing: 10px; text-align:left">
+                                &nbsp&nbsp<i class="fa-brands fa-js fa-2x" style="color:rgb(0, 140, 255)"></i>
+                                &nbspJavascript&nbsp <br><br>
+                                &nbsp<i class="fa-brands fa-html5 fa-2x" style="color:rgb(0, 140, 255)"></i>&nbspHtml&nbsp<br><br>
+                                &nbsp<i class="fa-brands fa-sass fa-2x" style="color:rgb(0, 140, 255)"></i>&nbspSass&nbsp<br><br>
+                              &nbsp&nbsp <i class="fa-brands fa-css3 fa-2x" style="color:rgb(0, 140, 255)"></i>&nbspCss3</p>
+                           </div>
+                       </center>
+                    </div>
+                       <div class="column" style="height: 400px;">
+                           <center>
+                           <div class="card">
+                               <h2 style="text-align:left;padding-left: 10px;">The ones i am<br> learning or about to</h2>
+                               <p style="text-align:left; word-spacing: 10px">
+                                &nbsp&nbsp <i class="fa-brands fa-react fa-2x" style="color:rgb(0, 140, 255)"></i>&nbspReact<br><br>
+                               &nbsp<i class="fa-brands fa-wordpress fa-2x" style="color:rgb(0, 140, 255)"></i>&nbspWordpress<br><br>
+                              &nbsp<i class="fa-brands fa-node-js fa-2x" style="color:rgb(0, 140, 255)"></i>&nbspNode-Js<br><br>
+                             &nbsp &nbsp<i class="fa-brands fa-angular fa-2x" style="color:rgb(0, 140, 255)"></i>&nbspAngular-Js</p>
+                           </div>
+                       </center>
+                       </div>
+                   </div>
+            </div>
+        </section>
+
+
+
+        <section>
+           <div class="row">
+            <p id="portfolio"></p>
+            <br>
+            <br>
+            <h1 class="first-heading">PORTFOLIO</h1>
+            <div class="column" style="height:auto">
+                <p id="skill-text" style="text-align:center">Here are some of my recent projects.<br>Use the filter button to see them.Note this is just a tip of
+                 the ice park<strong>("They are more than what you see!")</strong></p><br>
+                 <button type="button" id="bot3" class="filter-button">FILTER</button>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span><button type="button" id="hireButton" class="filter-button">HIRE ME!</button></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span id="numbers" style="font-size:larger">1/4</span>
+                 <br>
+                 <br>
+                   <div class="blur-container" id="page">
+                    <h2 id="h2" style="text-align:center">Catering website</h2>
+                    <h4 id="para" style="text-align:center">This page you are seeing was powered by Javascript</h4>
+                    <img src="bite-up.jpeg" id="img" width="100%" height="300px" alt="my-recent-projects">
+                    <div class="content">
+                    </div>
+                   </div>
+            </div>
+            <div class="column" style="height:400px">
+                <center>
+                <i class="fa-solid fa-money-check-dollar"  style="color:rgb(64, 134, 192);font-size: 165px;"></i><br>
+               
+                 <p id="skill-text">I love working in hand with my clients to avoid any misunderstanding.<br><br>As a developer i love 
+                   working honestly, and i expect you to work with me in integrity.<br>If i achieve this goal, then 
+                   i will keep to this <strong>"There is more happiness in give than there is in recieving."</strong> </p>
+                </center>
+            </div>
+           </div>
+        </section>
+
+
+        <scetion>
+            <div class="row">
+                <p id="contact"></p>
+                <br>
+                <br>
+                <h1 class="first-heading">CONTACT</h1>
+                <p id="skill-text" style="text-align:center">Fill in the awesome contact form below to get in touch with me.</p>
+                <br>
+              
+                <div class="form-page">
+                    <div class="column" height="500px">
+                        <form action="#" name="myForm">
+                            <center>
+                                <span id="demo2" style="color:red;text-align: left;"></span><br>
+                                <input type="text" placeholder="Enter your name"  name="userText" id="name" onkeyup="textValue()"><br>
+                                <span id="demo3" style="color:red;text-align: left;"></span><br>
+                                <input type="email" placeholder="Enter your mail" name="email" onkeyup="validateEmail()" autocomplete="off"><br>
+                                <span id="demo4" style="color:red;text-align: left;"></span><br>
+                               <textarea placeholder="Message me"  id="message" onkeyup="validateMessage()"></textarea><br><br>
+                           <button type="button" id="submitButton" class="submit-button">SEND</button>
+                        </center>
+                        </form> 
+                    </div>
+                </div>
+                <div class="column" height="500px">
+                            <center>
+                            <div class="adrees details">
+                                <i class="fa-solid fa-location-dot"   style="color:rgb(64, 134, 192);font-size: 30px;"></i>
+                                <div class="topic" id="skill-text">Address</div>
+                                <div class="text-one" id="skill-text">Gwagwalada Abuja</div>
+                            </div>
+                            <div class="phone details">
+                                <i class="fa-solid fa-phone"   style="color:rgb(64, 134, 192);font-size: 30px"></i>
+                                <div class="topic">Phone</div>
+                                <div class="text-one" id="skill-text">+2348174174423</div>
+                                <div class="text-two" id="skill-text">+234873952126</div>
+                            </div>
+                            <div class="email details">
+                                <i class="fa-solid fa-envelope"  style="color:rgb(64, 134, 192) ;font-size: 30px"></i>
+                                <div class="topic">Email</div>
+                                <div class="text-one" id="skill-text">ekemezienehemiah2004@gmail.com</div>
+                                <div class="text-two" id="skill-text">codehubby@gmail.com</div>
+                            </div>
+                        </div>
+                    </center>
+              </div>
+             </scetion>
+
+
+
+         <br>
+         <hr>
+        <footer>
+            <center>
+            <h2 style="color:red">Let's get in Touch</h2><br>
+             <p id="skill-text" class="loading-text">Follow me on Twitter and Facebook<br>Or chat me up on Whatsapp for your awesome project.</p>
+             <br>
+             <p>
+                <a href="https://twitter.com/Nehemiah1224?t=Q52RUZjIP0CKS-Vj_NvZ-Q&s=09"><i id="fa" class="fa fa-twitter" style="font-size:20px"></i></a>&nbsp&nbsp&nbsp
+                &nbsp&nbsp
+                <a href="https://api.whatsapp.com/send?phone=+2348174174423"><i id="fa" class="fa fa-whatsapp" style="font-size:20px"></i></a>
+                &nbsp&nbsp&nbsp &nbsp
+                <a href="https://www.facebook.com/ekemezie.nehemiaho"><i id="fa" class="fa fa-facebook" style="font-size:20px"></i></a>
+           </p>
+           </center>
+        </footer>
+       
+
+    <div class="alert3" id="alertMessage3">
+        <i class="fa-solid fa-check fa-2x" style="color:white" ></i><br>
+    Your message has been sent!
+    </div>
+
+    <div id="alertMessage2" class="alert2">
+    To contact section!<br>
+           or <br>
+         footer
+    </div>
+
+   <div id="alertMessage" class="alert">
+    Fill in the form please!
+   </div>
+   <script>
+    //submit button alert message
+    const submitButton = document.getElementById("submitButton");
+     submitButton.addEventListener("click", function() {
+         if  (document.getElementById("message").value == "" && document.getElementById("name").value == "" && document.myForm.email.value == "") {
+             document.getElementById("demo2").innerText = "Your name!";
+             document.getElementById("demo4").innerText = "Your message!";
+         } 
+     })
+        
+
+
+  submitButton.addEventListener("click", function() {
+ if (document.getElementById("message").value !== "" && document.getElementById("name").value !== "" && document.myForm.email.value !== "") {
+     document.getElementById("message").value = "";
+     document.getElementById("name").value = "";
+     document.myForm.email.value = "";
+     document.getElementById("demo2").innerText = "";
+     document.getElementById("demo3").innerText = "";
+     document.getElementById("demo4").innerText = "";
+     alertMessage3.style.display = "block";
+         setTimeout(function() {
+              alertMessage3.style.display = "none";
+         }, 2000)
+ }
+ });
+
+      //input field codes(message)
+    function validateMessage() {
+             var message = document.getElementById("message").value;
+             var inbox = /^[A-Za-z-, -.]+[a-zA-Z0-9._,-]$/;
+             if (message == "") {
+                 document.getElementById("demo4").innerHTML = "Your message!";
+             }else if (!inbox.test(message)) {
+                 document.getElementById("demo4").innerHTML = "Texts only!";
+             }else {
+                 return document.getElementById("demo4").innerHTML = '<span style="color:green">Valid</span>';
+             }
+         }
+
+
+            //input field codes(name)
+         function textValue() {
+     var n = document.getElementById("name").value;
+     var letters = /^[A-Za-z-, -.]+$/;
+      if (n == "") {
+         document.getElementById("demo2").innerHTML = "Your name!";
+      }else if (!letters.test(n)) {
+         document.getElementById("demo2").innerHTML =  "Texts only!";
+      }else if (document.myForm.userText.value.length <= 8) {
+         document.getElementById("demo2").innerHTML = '<span style="color:green">Valid</span>';
+      }
+      else {
+         return document.getElementById("demo2").innerHTML = '<span style="color:green">Valid</span>';
+      }
+     }
+    //input field codes(email)
+      function validateEmail() {
+             var emailvalue;
+             var x = document.myForm.email.value;
+             var atposition = x.indexOf("@");
+             var dotposition = x.lastIndexOf(".");
+     
+             if (atposition < 1 ||dotposition < atposition + 2) {
+                 emailvalue = "Please enter a valid email e-mail address \n atposition:" + atposition + "\n dotposition:" + dotposition;
+                 return false;
+             }else {
+                 emailvalue = '<span style="color:green">Valid</span>';
+             }
+             document.getElementById("demo3").innerHTML = emailvalue;
+         }
+
+
+         //hirebutton
+       const hireButton = document.querySelector("#hireButton");
+       const alertMessage2 = document.querySelector("#alertMessage2");
+       hireButton.addEventListener("click", function() {
+         alertMessage2.style.display = "block";
+          setTimeout(function() {
+              alertMessage2.style.display = "none";
+          }, 2000)
+        });
+
+        //for the index numbers
+         var numbs = ["1/4", "2/4", "3/4", "4/4"];
+         var currentTextsIndex = 0;
+          document.addEventListener("DOMContentLoaded", function() { //it will make it work after the page has finished loding
+             var changeImageButton = document.getElementById("bot3");
+             var TextsHolder = document.getElementById("numbers");
+             changeImageButton.addEventListener("click", function() {
+                 currentTextsIndex = (currentTextsIndex + 1) % numbs.length;
+                 TextsHolder.innerHTML = numbs[currentTextsIndex];
+             });
+         });
+
+
+       // codes for the filter section(portfolio)
+         var images = ["bite-up.jpeg","Intella.page.jpeg" , "mk-benny.jpeg", "charity-group-pic.jpeg"];
+         var currentImageIndex = 0;
+         document.addEventListener("DOMContentLoaded", function() { //it wii make it work after the page has finished loding
+             var changeImageButton = document.getElementById("bot3");
+             var imageHolder = document.getElementById("img");
+             changeImageButton.addEventListener("click", function() {
+                 currentImageIndex = (currentImageIndex + 1) % images.length;
+                 imageHolder.src = images[currentImageIndex];
+             });
+         });
+
+         
+         var text = ["Catering website", "College of Intella", "fruits website", "A charity group website"];
+         var currentTextIndex = 0;
+         document.addEventListener("DOMContentLoaded", function() { //it wii make it work after the page has finished loding
+             var changeTextButton = document.getElementById("bot3");
+             var textHolder = document.getElementById("h2");
+             changeTextButton.addEventListener("click", function() {
+                 currentTextIndex = (currentTextIndex + 1) % text.length;
+                 textHolder.innerHTML = text[currentTextIndex];
+             });
+         });
+
+
+     //codes for the navbar.
+     const header = document.getElementById("header");
+     const toggle = document.getElementById("toggle");
+     const navbar = document.getElementById("navbar");
+
+     document.onclick = function(a) {
+         if (a.target.id !== "header" && a.target.id !== "toggle" && a.target.id !== "navbar") {
+             toggle.classList.remove("active");
+         navbar.classList.remove("active");
+         }
+     }
+     toggle.onclick = function() {
+         toggle.classList.toggle("active");
+         navbar.classList.toggle("active");
+     }
+
+
+
+     //codes for the preloader icon.
+     setTimeout(function() {
+                 document.querySelector(".preloader").style.display = "none";
+             }, 2000);
+
+
+                  
+                //code for the toggle icon
+                 const toggler = document.getElementById("dark-mode-toggle");
+                 const icon = document.getElementById("dark-mode-icon")
+         
+                 //check if theme is already set in local storage;
+                 const currentTheme = localStorage.getItem("theme");
+                 if (currentTheme) {
+                     document.body.classList.add(currentTheme);
+                     icon.classList.add(currentTheme === "dark-mode" ? "fa-moon" : "fa-sun");
+                 }
+         
+                 toggler.addEventListener("click", () => {
+                     document.body.classList.toggle("dark-mode");
+                     icon.classList.toggle("fa-sun");
+                     icon.classList.toggle("fa-moon");
+         
+                     //save theme to local storage.
+                     if (document.body.classList.contains("dark-mode")) {
+                         localStorage.setItem("theme", "dark-mode");
+                     }else {
+                         localStorage.setItem("theme", "");
+                     }
+                 });
+   </script>
+</body>
+</html>
